@@ -1,25 +1,45 @@
 version: "3.9"
 
 services:
-  web:
-    build: .
-    volumes:
-      - ./src:/code/
-    ports:
-      - "8888:8888"
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    depends_on:
-      - db
-    tty: true
 
   db:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db
+    ports: 
+      - "5432:5432"
+
+
+  django:
+    build: 
+      context: ./docker/django
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/backend:/code/
+    ports:
+      - "8888:8888"
+    environment:
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_HOST: db
+    depends_on:
+      - db
+    tty: true
+
+
+  vue:
+    build:
+      context: ./docker/vue
+      dockerfile: Dockerfile
+    volumes: 
+      - ./src/frontend:/app
+    ports: 
+      - "3030:3030"
+    depends_on:
+      - django
+    tty: true
