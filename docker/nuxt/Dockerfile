@@ -8,6 +8,7 @@ RUN yarn install
 RUN yarn add @nuxtjs/axios
 
 RUN npm install -g npm
+RUN npm install vue-google-charts
 
 WORKDIR /code
 
