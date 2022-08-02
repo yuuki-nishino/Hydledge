@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="primary lighten-1" dense height="64" fixed>
+  <v-app-bar color="#0E2997" dense height="64" fixed>
     <v-toolba-title class="text-h3 font-weight-bold white--text">
       {{ Title }}
     </v-toolba-title>
@@ -10,7 +10,7 @@
 export default {
   name: 'TheHeader',
   data: () => ({
-    Title: 'WaterBase',
+    Title: 'Hydledge',
   }),
 }
 </script>

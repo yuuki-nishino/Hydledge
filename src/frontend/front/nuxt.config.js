@@ -23,6 +23,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+      {
+        src: '~/plugins/amcharts.js',
+        ssr: false
+      }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -36,6 +40,7 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

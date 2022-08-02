@@ -1,98 +1,197 @@
 <template>
-  <div class="container">
-    <v-row>
-      <GChart
-        :settings="chartSettings"
-        :type="chartType"
-        :data="chartData"
-        :options="chartOptions"
-      />
-      <GChart :type="chartType2" :data="chartData" :options="chartOptions2" />
-    </v-row>
-  </div>
+  <div id="chartdiv"></div>
 </template>
 
 <script>
-import { GChart } from 'vue-google-charts'
+// import * as am4core from '@amcharts/amcharts4/core'
+// import * as am4maps from '@amcharts/amcharts4/maps'
+// 世界地図のgeodataを取得
+// import am4geodataJapanLow from '@amcharts/amcharts4-geodata/japanHigh'
+import japan from '@/assets/japan_geodata'
 
 export default {
   name: 'IndexPage',
-  components: {
-    GChart,
+  // asyncData() {
+  //   const japan_json = `@/assets/mockup_data/japan_data.json`
+  //   return {
+  //     japan_json,
+  //   }
+  // },
+  mounted() {
+    const { am4core, am4maps } = this.$am4core()
+
+    const HeatmapColor = {
+      max: '#51AA12',
+      min: '#e4f1d9',
+      hover: '#2D5E0A',
+    }
+
+    const map = am4core.create('chartdiv', am4maps.MapChart)
+    map.geodata = japan
+    map.projection = new am4maps.projections.Miller()
+    const JapanSeries = map.series.push(new am4maps.MapPolygonSeries())
+    JapanSeries.useGeodata = true
+    // 日本地図ポリゴン設定
+    const JapanPolygon = JapanSeries.mapPolygons.template
+    // 日本地図ツールチップ
+    JapanPolygon.tooltipText = '{name}: {value}'
+    JapanPolygon.fill = am4core.color(HeatmapColor.hover)
+    // 日本地図ホバー
+    const JapanHs = JapanPolygon.states.create('hover')
+    JapanHs.properties.fill = am4core.color(HeatmapColor.hover)
+    // 日本地図ヒートマップ
+    JapanSeries.heatRules.push({
+      property: 'fill',
+      target: JapanPolygon,
+      min: am4core.color(HeatmapColor.min),
+      max: am4core.color(HeatmapColor.max),
+    })
+
+    const JapanHeatLegend = map.createChild(am4maps.HeatLegend)
+    JapanHeatLegend.series = JapanSeries
+    JapanHeatLegend.align = 'right'
+    JapanHeatLegend.height = am4core.percent(80)
+    JapanHeatLegend.orientation = 'vertical'
+    JapanHeatLegend.valign = 'middle'
+    JapanHeatLegend.marginRight = am4core.percent(4)
+    JapanHeatLegend.valueAxis.renderer.opposite = true
+    JapanHeatLegend.valueAxis.renderer.dx = -25
+    JapanHeatLegend.valueAxis.strictMinMax = false
+    JapanHeatLegend.valueAxis.fontSize = 9
+    JapanHeatLegend.valueAxis.logarithmic = false
+
+    // 日本地図: 配送量データ読み込み
+    JapanSeries.data = require('@/assets/mockup_data/japan_data.json')
+
+    // 地方地図：読み込み・設定
+    const CitySeries = map.series.push(new am4maps.MapPolygonSeries())
+    CitySeries.useGeodata = true
+    CitySeries.hide()
+    // 市町村地図: ポリゴン設定
+    const CityPolygon = CitySeries.mapPolygons.template
+
+    // 市町村別地図: ツールチップ
+    CityPolygon.tooltipText = '{name}: {value}'
+    CityPolygon.fill = am4core.color(HeatmapColor.hover)
+
+    // 市町村別地図: ホバー
+    const CityHs = CityPolygon.states.create('hover')
+    CityHs.properties.fill = am4core.color(HeatmapColor.hover)
+
+    // 市町村別地図: ヒートマップ
+    CitySeries.heatRules.push({
+      property: 'fill',
+      target: CityPolygon,
+      min: am4core.color(HeatmapColor.min),
+      max: am4core.color(HeatmapColor.max),
+    })
+
+    const CityHeatLegend = map.createChild(am4maps.HeatLegend)
+    CityHeatLegend.series = CitySeries
+    CityHeatLegend.align = 'right'
+    CityHeatLegend.height = am4core.percent(80)
+    CityHeatLegend.orientation = 'vertical'
+    CityHeatLegend.valign = 'middle'
+    CityHeatLegend.marginRight = am4core.percent(4)
+    CityHeatLegend.valueAxis.renderer.opposite = true
+    CityHeatLegend.valueAxis.renderer.dx = -25
+    CityHeatLegend.valueAxis.strictMinMax = false
+    CityHeatLegend.valueAxis.fontSize = 9
+    CityHeatLegend.valueAxis.logarithmic = false
+    CityHeatLegend.hide()
+
+    // 市町村別地図: 市町村別地図が読み込みが終わったら日本全体地図を閉じて，市町村別地図だけを表示
+    CitySeries.geodataSource.events.on('done', function (ev) {
+      JapanSeries.hide()
+      JapanHeatLegend.hide()
+      CitySeries.show()
+      CityHeatLegend.show()
+    })
+
+    // 市町村別地図: 地図・配送データの動的読み込みのためのイベントを日本地図側に設定
+    JapanPolygon.events.on('hit', function (ev) {
+      const PrefName = ev.target.dataItem.dataContext.name
+      const VirtualLati = ev.target.dataItem.dataContext.virtual_lati
+      const VirtualLong = ev.target.dataItem.dataContext.virtual_long
+
+      if (VirtualLati !== undefined) {
+        // console.log(virtual_lati);
+        map.zoomToGeoPoint(
+          {
+            latitude: VirtualLati,
+            longitude: VirtualLong,
+          },
+          20,
+          true
+        )
+      } else {
+        map.zoomToMapObject(ev.target)
+      }
+      // onoff_zoompan(false, 20);
+
+      if (PrefName) {
+        ev.target.isHover = false
+        // 市町村別地図: 地図データ読み込み
+        CitySeries.geodataSource.url = '@/assets/map_data/' + PrefName + '.json'
+        CitySeries.geodataSource.load()
+
+        // 市町村別地図: 数量データ読み込み
+        CitySeries.dataSource.url = require('@/assets/mockup_data/' +
+          PrefName +
+          '.json')
+        CitySeries.dataSource.load()
+
+        // 市町村別地図: 数量データのデフォルト値を設定
+        // https://www.amcharts.com/docs/v4/tutorials/manipulating-chart-data/
+        CitySeries.events.on('beforedatavalidated', function (ev) {
+          ev.target.data.forEach(
+            (obj) => (obj.value = obj.value === undefined ? 0 : obj.value)
+          )
+        })
+
+        // 市町村別地図: 数量データ読み込み時のエラーハンドリング
+        CitySeries.dataSource.events.on('error', function (ev) {
+          // デフォルトのエラーモーダルを閉じる
+          map.modal.close()
+          // 日本語のエラーを表示
+          map.openModal(
+            `エラー: ${PrefName}の詳細データが読み込めませんでした．`,
+            'エラー'
+          )
+          // 以前のデータを削除
+          CitySeries.data.length = 0
+        })
+        back.show()
+      }
+    })
+    const back = map.createChild(am4core.ZoomOutButton)
+    back.align = 'right'
+    back.marginRight = am4core.percent(10)
+    back.hide()
+    back.events.on('hit', function (ev) {
+      ResetMap()
+    })
+
+    function ResetMap() {
+      // onoff_zoompan(true);
+      JapanSeries.show()
+      JapanHeatLegend.show()
+      map.goHome(500)
+      CitySeries.hide()
+      CityHeatLegend.hide()
+      back.hide()
+    }
   },
-  data() {
-    return {
-      chartSettings: {
-        packages: ['geochart'],
-      },
-      chartType: 'GeoChart',
-      chartType2: 'ColumnChart',
-      chartData: [
-        ['都道府県', '人口'],
-        ['北海道', 5224614],
-        ['青森', 1237984],
-        ['岩手', 1210534],
-        ['宮城', 2301996],
-        ['秋田', 959502],
-        ['山形', 1068027],
-        ['福島', 1833152],
-        ['茨城', 2867009],
-        ['栃木', 1933146],
-        ['群馬', 1939110],
-        ['埼玉', 7344765],
-        ['千葉', 6284480],
-        ['東京', 14047594],
-        ['神奈川', 9237337],
-        ['新潟', 2201272],
-        ['富山', 1034814],
-        ['石川', 1132526],
-        ['福井', 766863],
-        ['山梨', 809974],
-        ['長野', 2048011],
-        ['岐阜', 1948742],
-        ['静岡', 3633202],
-        ['愛知', 7542415],
-        ['三重', 1770254],
-        ['滋賀', 1413610],
-        ['京都', 2578087],
-        ['大阪', 8837685],
-        ['兵庫', 5465002],
-        ['奈良', 1324473],
-        ['和歌山', 922584],
-        ['鳥取', 553407],
-        ['島根', 671527],
-        ['岡山', 1888432],
-        ['広島', 2799702],
-        ['山口', 1342059],
-        ['徳島', 719559],
-        ['香川', 950244],
-        ['愛媛', 1344841],
-        ['高知', 691527],
-        ['福岡', 5135214],
-        ['佐賀', 811442],
-        ['長崎', 1312317],
-        ['熊本', 1738301],
-        ['大分', 1123852],
-        ['宮崎', 1069576],
-        ['鹿児島', 1588256],
-        ['沖縄', 1467480],
-      ],
-      chartOptions: {
-        region: 'JP',
-        resolution: 'provinces',
-        displayMode: 'regions',
-        colors: ['white', 'blue'],
-        width: '500',
-        height: '600',
-      },
-      chartOptions2: {
-        chart: {
-          title: '都道府県別人口',
-        },
-        width: '600',
-        height: '500',
-      },
+  beforeDestroy() {
+    if (this.map) {
+      this.map.dispose()
     }
   },
 }
 </script>
+<style scoped>
+#chartdiv {
+  width: 100%;
+  height: 600px;
+}
+</style>

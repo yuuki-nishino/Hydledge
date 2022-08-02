@@ -32,6 +32,11 @@ export default {
           title: 'Inspire',
           to: '/inspire',
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Old',
+          to: '/old',
+        },
       ],
       miniVariant: false,
       right: true,
