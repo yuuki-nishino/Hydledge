@@ -1,11 +1,9 @@
 <template>
   <v-app>
     <TheHeader />
-    <v-sheet elevation="0" height="64" width="100%"></v-sheet>
+    <v-sheet elevation="0" height="192" width="100%"></v-sheet>
     <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
+      <Nuxt />
     </v-main>
     <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
