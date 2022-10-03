@@ -35,9 +35,11 @@
       </v-btn>
       <template #extension>
         <v-tabs align-with-title>
-          <v-tab @click="returnTop">Hardness</v-tab>
-          <v-tab>Tab 2</v-tab>
-          <v-tab>Tab 3</v-tab>
+          <v-tab @click="returnTop">Top</v-tab>
+          <v-tab @click="moveHard">Hardness</v-tab>
+          <v-tab>Charges</v-tab>
+          <v-tab>CO2 Emmission</v-tab>
+          <v-tab style="text-transform: none">pH</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -54,6 +56,9 @@ export default {
   methods: {
     returnTop() {
       this.$router.push('/')
+    },
+    moveHard() {
+      this.$router.push('/hardness/')
     },
   },
 }

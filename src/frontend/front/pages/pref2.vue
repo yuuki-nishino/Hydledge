@@ -32,10 +32,10 @@
 
 <script>
 import { GChart } from 'vue-google-charts'
-import NaganoData from '@/assets/mockup_data/NaganoHardness.json'
+import NaganoData from '@/assets/mockup_data/HardnessData/NaganoHardness.json'
 
 export default {
-  name: 'PrefPage',
+  name: 'Pref2Page',
   components: {
     GChart,
   },

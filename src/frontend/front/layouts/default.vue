@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <TheHeader />
-    <v-sheet elevation="0" height="192" width="100%"></v-sheet>
+    <v-sheet elevation="0" height="165" width="100%"></v-sheet>
     <v-main>
       <Nuxt />
     </v-main>
@@ -12,8 +12,12 @@
 </template>
 
 <script>
+import TheHeader from '~/components/layouts/TheHeader.vue'
 export default {
   name: 'DefaultLayout',
+  components: {
+    TheHeader,
+  },
   data() {
     return {
       clipped: false,
