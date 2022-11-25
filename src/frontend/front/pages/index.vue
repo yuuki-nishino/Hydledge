@@ -15,7 +15,24 @@ export default {
   name: 'TopPage',
   components: { AboutSec, PurposeSec, ContentsSec },
   data() {
-    return {}
+    return {
+      // breadcrumbs: [
+      //   {
+      //     name: 'トップページ',
+      //     path: '/',
+      //   },
+      // ],
+    }
+  },
+  computed: {
+    breadcrumbs() {
+      return [
+        {
+          name: 'ホーム',
+          path: '/',
+        },
+      ]
+    },
   },
 }
 </script>

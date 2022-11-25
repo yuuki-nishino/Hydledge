@@ -1,22 +1,22 @@
 <template>
   <v-app>
     <TheHeader />
-    <v-sheet elevation="0" height="165" width="100%"></v-sheet>
+    <v-sheet elevation="0" height="100" width="100%"></v-sheet>
     <v-main>
       <Nuxt />
     </v-main>
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    <TheFooter />
   </v-app>
 </template>
 
 <script>
 import TheHeader from '~/components/layouts/TheHeader.vue'
+import TheFooter from '~/components/layouts/TheFooter.vue'
 export default {
   name: 'DefaultLayout',
   components: {
     TheHeader,
+    TheFooter,
   },
   data() {
     return {
