@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <TheHeader />
-    <v-sheet elevation="0" height="100" width="100%"></v-sheet>
+    <v-sheet elevation="0" height="70" width="100%"></v-sheet>
     <v-main>
       <Nuxt />
     </v-main>

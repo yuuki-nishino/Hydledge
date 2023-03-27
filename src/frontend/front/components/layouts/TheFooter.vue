@@ -1,6 +1,6 @@
 <template>
-  <v-footer padless color="blue lighten-4">
-    <v-card flat tile width="100%" class="blue lighten-4 text-center">
+  <v-footer padless color="blue lighten-5">
+    <v-card flat tile width="100%" class="blue-grey lighten-4 text-center">
       <v-row class="my-2 py-3">
         <v-col cols="12" md="4">
           <v-row class="text-h2 my-2 py-3" justify="center">
@@ -96,7 +96,7 @@ export default {
 
   data() {
     return {
-      logo_src: require('@/assets/img/logo_blue1.png'),
+      logo_src: require('@/assets/img/logo_original2.png'),
       sns: [
         { icon: 'mdi-facebook', link: 'https://ja-jp.facebook.com/' },
         { icon: 'mdi-twitter', link: 'https://twitter.com/' },

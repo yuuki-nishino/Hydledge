@@ -1,50 +1,41 @@
 <template>
   <v-card>
-    <v-app-bar
-      fixed
-      prominent
-      color="#0E2997"
-      :src="image_src"
-      dark
-      fade-img-on-scroll
-      scroll-target="#scrolling-techniques-3"
-      height="100"
-    >
-      <template #img="{ props }">
+    <v-app-bar fixed dense height="70">
+      <!-- <template #img="{ props }">
         <v-img
           v-bind="props"
-          gradient="to top right, rgba(14,41,151,.5), rgba(14,41,151,.5)"
+          gradient="to top right, rgba(255,255,255,.99), rgba(255,255,255,.99)"
         ></v-img>
-      </template>
+      </template> -->
 
       <v-toolbar-title
         class="text-h3 text-md-h2 font-weight-bold white--text mb-1"
         style="cursor: pointer"
         @click="returnTop"
       >
-        <v-img :src="logo_src" max-width="350"></v-img>
+        <v-img :src="logo_src" max-width="250"></v-img>
         <!-- {{ Title }} -->
       </v-toolbar-title>
 
-      <v-spacer></v-spacer>
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
+      <v-spacer></v-spacer>
       <v-divider vertical></v-divider>
       <v-tabs height="50%" hide-slider class="mt-10 hidden-sm-and-down">
         <v-tab v-for="item in items" :key="item.name">
           <v-btn
             v-if="!item.children"
             text
-            class="white--text"
+            class="primary--text"
             @click="getCreateUrl(item.link)"
           >
             <strong>{{ item.name }}</strong>
           </v-btn>
           <v-menu v-else offset-y>
             <template #activator="{ on, attrs }">
-              <v-btn text class="white--text" v-bind="attrs" v-on="on">
+              <v-btn text class="primary--text" v-bind="attrs" v-on="on">
                 <strong>{{ item.name }}</strong>
                 <v-icon>mdi-chevron-down</v-icon>
               </v-btn>
@@ -157,7 +148,7 @@ export default {
   name: 'TheHeader',
   data: () => ({
     Title: 'Hydledge',
-    logo_src: require('@/assets/img/logo_white2.png'),
+    logo_src: require('@/assets/img/logo_original.png'),
     image_src: require('@/assets/img/falling.jpeg'),
     isOpen: false,
     items: [
@@ -174,7 +165,18 @@ export default {
           },
         ],
       },
-      { name: '水道料金', link: '/' },
+      {
+        name: '水道料金',
+        link: '/charge',
+        children: [
+          { name: '水道料金の説明', link: '/charge' },
+          { name: '日本の水道料金データ', link: '/charge/data' },
+          {
+            name: '都道府県ごとの水道料金データ',
+            link: '/charge/data/select_pref',
+          },
+        ],
+      },
       { name: 'C02排出量', link: '/' },
       { name: 'pH', link: '/' },
     ],
