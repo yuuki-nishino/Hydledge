@@ -2,8 +2,12 @@
   <div>
     <!-- <AboutSec /> -->
     <PurposeSec />
+    <v-divider></v-divider>
     <MissionSec />
+    <v-divider></v-divider>
     <ContentsSec />
+    <v-divider></v-divider>
+    <NewsSec />
   </div>
 </template>
 
@@ -12,10 +16,11 @@
 import PurposeSec from '~/components/pages/PurposeSec.vue'
 import MissionSec from '~/components/pages/MissionSec.vue'
 import ContentsSec from '~/components/pages/ContentsSec.vue'
+import NewsSec from '~/components/pages/NewsSec.vue'
 
 export default {
   name: 'TopPage',
-  components: { PurposeSec, MissionSec, ContentsSec },
+  components: { PurposeSec, MissionSec, ContentsSec, NewsSec },
   data() {
     return {
       // breadcrumbs: [

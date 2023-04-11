@@ -5,7 +5,7 @@
         <v-row
           class="d-flex justify-center align-center text-center"
           align-content="center"
-          style="height: 50vh"
+          style="height: 30vh"
         >
           <v-col cols="12" class="primary--text">
             <!-- <div class="text-h3 text-md-h2 font-weight-black mb-15">
@@ -13,8 +13,10 @@
             </div> -->
             <div class="text-h4 text-md-h2 mt-5 font-weight-bold">
               <p class="serif">
-                「水のチカラで現在から未来の<br />
-                全ての人と地球を健康にする」
+                「水のチカラで<br class="hidden-md-and-up" />
+                現在から未来の<br />
+                全ての人と地球を<br class="hidden-md-and-up" />
+                健康にする」
               </p>
             </div>
           </v-col>
@@ -37,14 +39,14 @@ export default {
   background-image: url('~@/assets/img/purpose_back.jpg');
   background-position: center;
   width: 100%;
-  height: 60vh;
+  height: 30vh;
   background-size: 100%;
 }
 
 .purpose-rgb {
   background: rgba(255 255 255 / 70%);
   width: 100%;
-  height: 60vh;
+  height: 30vh;
 }
 
 .serif {
