@@ -3,7 +3,7 @@
     <v-container>
       <v-row class="d-flex justify-center align-center text-center">
         <v-col cols="12">
-          <div class="text-h2 font-weight-black my-2">Contents</div>
+          <div class="text-h4 text-md-h3 font-weight-black my-2">Contents</div>
         </v-col>
       </v-row>
       <v-row
@@ -11,7 +11,7 @@
         style="height: 100%"
       >
         <v-col v-for="item in items" :key="item.title" cols="12" sm="6" lg="3">
-          <v-card class="mx-auto" max-width="300">
+          <v-card class="mx-auto my-3" max-width="300">
             <v-img :src="item.img" height="280px"></v-img>
 
             <v-card-title> {{ item.title }} </v-card-title>
@@ -128,6 +128,5 @@ export default {
 .contents-rgb {
   background: rgba(220 220 220);
   width: 100%;
-  height: 80vh;
 }
 </style>

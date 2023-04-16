@@ -31,7 +31,7 @@
             </div>
           </v-col>
         </v-row>
-        <v-row justify="center">
+        <v-row class="my-2 mb-4" justify="center">
           <v-img
             :src="mission_img_src"
             max-width="55%"
@@ -66,6 +66,5 @@ export default {
 .mission-rgb {
   background: #5c9ee7;
   width: 100%;
-  height: 55vh;
 }
 </style>
