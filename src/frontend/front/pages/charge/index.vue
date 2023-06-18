@@ -164,7 +164,7 @@
               </div>
             </v-row>
             <v-row class="my-3 mx-3">
-              <v-img :src="full_cost" max-width="90%"></v-img>
+              <v-img :src="full_cost" max-width="100%"></v-img>
             </v-row>
             <br />
             <v-row class="my-2 mx-3">
