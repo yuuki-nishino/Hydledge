@@ -20,11 +20,12 @@
             </v-row>
             <v-row class="my-2 mx-3">
               <div>
-                水道料金が自治体によって異なることをご存知の方は多いのではないかと思います。<br />
-                では、どれだけ違いがあるのでしょうか？<br />
-                自治体ごとの水道料金をランキングしたWebページはすでにあったりしますが、そのデータを詳しく見ることはできません。<br />
-                このサイトでは、全国の自治体における水道料金や都道府県の平均水道料金についてランキング形式で表示しています。
-                また、口径や水量による違いも表示したり、基本料金と超過料金のデータについて表示しています。<br />
+                水道料金が自治体によって異なることは、多くの方がご存知の方かと思います。<br />
+                実際にはどれだけ違いがあるのでしょうか？<br />
+                自治体ごとの水道料金をランキングしたWebサイトはありますが、詳細なデータを確認することはできません。<br />
+                このWebサイトでは、全国の自治体の水道料金や都道府県の平均水道料金をランキング形式で表示しています。
+                一般的な水道使用量だけではなく、口径や使用水量による料金の差、基本料金と超過料金のデータについても掲載していますので、
+                ご自身の住んでいるまちや興味のあるまちの情報をチェックしてみてください。<br />
               </div>
             </v-row>
             <v-row class="mt-2">
@@ -34,7 +35,7 @@
             </v-row>
             <v-row class="mb-5">
               <v-col cols="12" md="10" class="ml-10">
-                <ol color="rgba(242 242 242)">
+                <ul color="rgba(242 242 242)">
                   <li>
                     <router-link to="/charge#intro"
                       >水道事業と水道料金</router-link
@@ -44,16 +45,25 @@
                     <router-link to="/charge#how">
                       水道料金算定の仕組み
                     </router-link>
+                    <ul>
+                      <li>総括原価方式</li>
+                      <li>水道料金体系</li>
+                    </ul>
                   </li>
                   <li>
                     <router-link to="/charge#variant">口径と使用量</router-link>
+                    <ul>
+                      <li>口径について</li>
+                      <li>使用水量について</li>
+                      <li>（例）口径と使用水量の違いによる料金の違い</li>
+                    </ul>
                   </li>
                   <li id="intro">
                     <router-link to="/charge#data"
                       >水道料金データの見方</router-link
                     >
                   </li>
-                </ol>
+                </ul>
               </v-col>
             </v-row>
             <v-divider></v-divider>
@@ -64,8 +74,9 @@
             </v-row>
             <v-row class="my-2 mx-3">
               <div>
-                水道料金を決めている水道事業とはどんな事業なのでしょうか？<br />
-                水道事業は、地方公共団体が住民の福祉の増進を目的として設定し、経営する地方公営企業として運営されています。<br />
+                水道料金を決定している水道事業とはどんな事業なのでしょうか？<br />
+                水道事業は、地方公共団体が住民の福祉の増進を目的として設定し、
+                経営する地方公営企業として運営されています。<br />
               </div>
               <div class="box1">
                 <p>
@@ -93,7 +104,7 @@
                   target="_blank"
                   >地方公営企業法第17条の2第2項</a
                 >
-                ）と規定されていて、基本的には水道料金等の事業収入で経営しなければならない原則があります。
+                ）と規定されており、基本的には水道料金等の事業収入で経営しなければならない原則があります。
               </div>
               <div>
                 また、水道料金は、「<strong
@@ -117,7 +128,7 @@
                 ）、公正妥当であることが求められています。
               </div>
               <div id="how" class="my-10">
-                では、水道料金はどのように決められるのでしょうか？
+                では、水道料金はどのように決定されているのでしょうか？
               </div>
             </v-row>
 
@@ -128,118 +139,128 @@
               </v-col>
             </v-row>
             <v-row class="my-2 mx-3">
+              <div>
+                参考：日本水道協会「
+                <a
+                  href="http://www.jwwa.or.jp/houkokusyo/pdf/suidou_santei/suidou_santei_02.pdf"
+                  target="_blank"
+                >
+                  水道料金算定要領
+                </a>
+                、水道料金改定業務の手引き」
+              </div>
+            </v-row>
+            <v-row class="my-2 mx-3">
               <h2 class="primary--text">総括原価</h2>
             </v-row>
             <v-row class="my-2 mx-3">
-              <div><strong>総括原価 = 営業費用 + 資本費用</strong></div>
-              <div class="my-5">
-                料金算定期間中における料金総収入額は、適正な原価に基づき算定されなければなりません。
-                この場合の原価は、営業費用のほか資本費用をも含むものであり、
-                これが通常、総括原価と言われるところから、料金総収入額は、総括原価に等しいものとして決定されます。
-              </div>
-              <div class="my-3">
-                <strong>営業費用：人件費、修繕費、減価償却費など</strong><br />
-                <strong>資本費用：支払利息、資本維持費</strong><br />
-                ※資産維持費：施設の改修・更新に必要となる費用
+              <div class="my-1">
+                水道事業では「総括原価方式」という方法で水道料金が決定されています。
+                水道事業における総括原価方式とは、発生した営業費用（人件費、修繕費、減価償却費等）
+                に資本費用（支払利息、資産維持費）を加え、水道料金収入以外の収入を差し引いて料金を算定する方法です。
+                資産維持費とは施設の改修・更新に必要となる費用とされています。
+                これは、「事業運営にかかるコスト」と「かかるであろうコスト」を水道料金収入で賄うように
+                料金水準が設定されていることを意味します。
               </div>
             </v-row>
-            <v-row class="my-2 mx-3">
+            <v-row class="my-3 mx-3">
               <v-img :src="full_cost" max-width="90%"></v-img>
             </v-row>
+            <br />
             <v-row class="my-2 mx-3">
               <h2 class="primary--text">水道料金体系</h2>
             </v-row>
             <v-row class="my-2 mx-3">
               <div class="my-2">
-                水道料金の体系は大きく分けて<strong>「用途別」</strong>と<strong>「口径別」</strong>に分けられます。<br />
-                一般的に「基本料金」と「従量料金」で構成される「二部料金制」が採用されています。<br />
-              </div>
-              <div class="my-2">
-                <strong>基本料金：固定的にかかる経費</strong><br />
-                <strong>従量料金：使用した水量に応じて負担する経費</strong
-                ><br />
+                総括原価方式で必要な料金収入の総額が決定された後、水道料金体系が設定されます。
+                水道料金体系は、使用している水道管の太さ（口径）、使用水量、用途等によって各自治体で定められています。
+                水道料金の体系は、大きく<strong>「用途別」</strong>と<strong>「口径別」</strong>に分けられ、
+                一般的に固定的にかかる費用に当たる<strong>「基本料金」</strong>と
+                使用した水量に応じて負担する費用にあたる<strong>「従量料金」</strong>で構成される
+                <strong>「二部料金性」</strong>が採用されています。
               </div>
             </v-row>
             <v-row class="my-2 mx-3">
               <v-img :src="charge_system" max-width="50%"></v-img>
             </v-row>
             <v-row class="my-2 mx-3">
-              <h3>全国の料金体系別の割合 <br /></h3>
+              <h3>全国の事業体における水道料金体系別割合 <br /></h3>
             </v-row>
             <v-row class="my-2 mx-3">
-              <div>出典：水道料金表（日本水道協会）<br /></div>
+              <div>
+                水道料金体系は普段意識することは少ないかもしれませんが、下の表でまとめたように、
+                区分が「用途別」なのか「口径別」なのか「その他」なのか、
+                基本料金において「基本水量あり」なのか「基本水量なし」なのか等、
+                水道事業体によって様々な体系が存在します。
+              </div>
+            </v-row>
+            <v-row class="my-2 mx-3">
+              <div>
+                出典：日本水道協会「水道料金表（令和3年4月1日現在）」<br />
+              </div>
             </v-row>
             <v-row class="my-2">
-              <v-col cols="12" md="6">
+              <v-col cols="12">
                 <table
                   border="1"
                   style="border-collapse: collapse"
                   bgcolor="#FFFFFF"
+                  width="90%"
                 >
                   <tr>
-                    <td valign="bottom"></td>
-                    <td valign="bottom">区分</td>
-                    <td valign="bottom">基本料金（準備料金）</td>
-                    <td valign="bottom">事業体数</td>
-                    <td valign="bottom">比率（%）</td>
-                    <td valign="bottom">小計</td>
+                    <th valign="bottom">区分</th>
+                    <th valign="bottom">基本料金（準備料金）</th>
+                    <th valign="bottom">事業体数</th>
+                    <th valign="bottom">比率（%）</th>
+                    <th valign="bottom">小計</th>
                   </tr>
                   <tr bgcolor="#BDD7EE">
-                    <td valign="bottom"></td>
-                    <td rowspan="3" align="center">用途別</td>
+                    <th rowspan="3" align="center">用途別</th>
                     <td valign="bottom">用途別基本料金<br />基本水量あり</td>
                     <td align="right" valign="bottom">367</td>
                     <td align="right" valign="bottom">29.1</td>
                     <td rowspan="3" align="right" valign="bottom">380</td>
                   </tr>
                   <tr bgcolor="#BDD7EE">
-                    <td valign="bottom"></td>
                     <td valign="bottom">単一基本料金<br />基本水量あり</td>
                     <td align="right" valign="bottom">12</td>
                     <td align="right" valign="bottom">1.0</td>
                   </tr>
                   <tr bgcolor="#BDD7EE">
-                    <td valign="bottom"></td>
                     <td valign="bottom">単一基本料金<br />基本水量なし</td>
                     <td align="right" valign="bottom">1</td>
                     <td align="right" valign="bottom">0.1</td>
                   </tr>
                   <tr bgcolor="#F8CBAD">
-                    <td valign="bottom"></td>
-                    <td rowspan="2" align="center">口径別</td>
+                    <th rowspan="2" align="center">口径別</th>
                     <td valign="bottom">基本水量無し<br />基本料金</td>
                     <td align="right" valign="bottom">323</td>
                     <td align="right" valign="bottom">25.6</td>
                     <td rowspan="2" align="right" valign="bottom">752</td>
                   </tr>
                   <tr bgcolor="#F8CBAD">
-                    <td valign="bottom"></td>
                     <td valign="bottom">基本水量付<br />基本料金</td>
                     <td align="right" valign="bottom">429</td>
                     <td align="right" valign="bottom">34.0</td>
                   </tr>
                   <tr bgcolor="#DBDBDB">
-                    <td valign="bottom"></td>
-                    <td rowspan="3" align="center">その他</td>
+                    <th rowspan="3" align="center">その他</th>
                     <td valign="bottom">基本水量付<br />単一基本料金</td>
                     <td align="right" valign="bottom">116</td>
                     <td align="right" valign="bottom">9.2</td>
                     <td rowspan="3" align="right" valign="bottom">129</td>
                   </tr>
                   <tr bgcolor="#DBDBDB">
-                    <td valign="bottom"></td>
                     <td valign="bottom">基本水量無し<br />単一基本料金</td>
                     <td align="right" valign="bottom">13</td>
                     <td align="right" valign="bottom">1.0</td>
                   </tr>
                   <tr bgcolor="#DBDBDB">
-                    <td valign="bottom"></td>
                     <td valign="bottom">基本水量無し<br />基本料金なし</td>
                     <td align="right" valign="bottom">0</td>
                     <td align="right" valign="bottom">0.0</td>
                   </tr>
                   <tr>
-                    <td valign="bottom"></td>
                     <td colspan="2" valign="bottom">合計</td>
                     <td align="right" valign="bottom">1261</td>
                     <td align="right" valign="bottom">100</td>
@@ -247,12 +268,18 @@
                   </tr>
                 </table>
               </v-col>
-              <v-col cols="12" md="6">
+              <v-col cols="12">
                 <v-img :src="ratio_system" max-width="90%"></v-img>
               </v-col>
             </v-row>
             <v-row class="my-2 mx-3 mt-10">
               <h3>全国の料金体系別の推移 <br /></h3>
+            </v-row>
+            <v-row class="my-2 mx-3">
+              <div>
+                下の表とグラフは、水道料金体系の区分別の事業対数及びその割合の推移を示しています。
+                昭和年代は「用途別」が多かったようですが、「口径別」が増加し、令和3年度には約60%になっています。
+              </div>
             </v-row>
             <v-row class="my-2 mx-3">
               <table
@@ -261,18 +288,18 @@
                 bgcolor="#FFFFFF"
               >
                 <tr>
-                  <td colspan="2" rowspan="2" align="center">区分</td>
-                  <td rowspan="2" width="60" align="center">S40</td>
-                  <td rowspan="2" width="60" align="center">S60</td>
-                  <td rowspan="2" width="60" align="center">H17</td>
-                  <td rowspan="2" width="60" align="center">H21</td>
-                  <td rowspan="2" width="60" align="center">H25</td>
-                  <td rowspan="2" width="60" align="center">H29</td>
-                  <td rowspan="2" width="60" align="center">R3</td>
+                  <th colspan="2" rowspan="2" align="center">区分</th>
+                  <th rowspan="2" width="60" align="center">S40</th>
+                  <th rowspan="2" width="60" align="center">S60</th>
+                  <th rowspan="2" width="60" align="center">H17</th>
+                  <th rowspan="2" width="60" align="center">H21</th>
+                  <th rowspan="2" width="60" align="center">H25</th>
+                  <th rowspan="2" width="60" align="center">H29</th>
+                  <th rowspan="2" width="60" align="center">R3</th>
                 </tr>
                 <tr></tr>
                 <tr bgcolor="#BDD7EE">
-                  <td rowspan="2" width="70" align="center">用途別</td>
+                  <th rowspan="2" width="70" align="center">用途別</th>
                   <td width="80" align="center">事業体数</td>
                   <td align="right">1,095</td>
                   <td align="right">868</td>
@@ -293,7 +320,7 @@
                   <td align="right">30.1%</td>
                 </tr>
                 <tr bgcolor="#F8CBAD">
-                  <td rowspan="2" align="center">口径別</td>
+                  <th rowspan="2" align="center">口径別</th>
                   <td align="center">事業体数</td>
                   <td align="right">11</td>
                   <td align="right">705</td>
@@ -314,7 +341,7 @@
                   <td align="right">59.6%</td>
                 </tr>
                 <tr bgcolor="#DBDBDB">
-                  <td rowspan="2" align="center">その他</td>
+                  <th rowspan="2" align="center">その他</th>
                   <td align="center">事業体数</td>
                   <td align="right">0</td>
                   <td align="right">270</td>
@@ -335,7 +362,7 @@
                   <td align="right">10.2%</td>
                 </tr>
                 <tr>
-                  <td rowspan="2" align="center">合計</td>
+                  <th rowspan="2" align="center">合計</th>
                   <td align="center">事業体数</td>
                   <td align="right">1,106</td>
                   <td align="right">1,843</td>
@@ -358,10 +385,7 @@
               </table>
             </v-row>
             <v-row id="variant" class="my-2 mx-3">
-              <v-img :src="change_graph" max-width="70%"></v-img>
-            </v-row>
-            <v-row class="my-2 mx-3">
-              <div>口径別の割合が増えてきていることがわかりますね。 <br /></div>
+              <v-img :src="change_graph" max-width="90%"></v-img>
             </v-row>
 
             <v-divider></v-divider>
@@ -372,9 +396,8 @@
             </v-row>
             <v-row class="my-2 mx-3">
               <div>
-                これまでの説明からもわかるように、日本の水道料金のほとんどは、
-                <b>「使用量」</b>と<b>「口径」</b>で決まります。<br />
-                では、「口径」とは一体何なのでしょうか。
+                水道料金のデータを理解するためには、口径と使用水量の違いを把握することが大切です。
+                ここでは水道料金の違いに影響を与える「口径」と「使用水量」の説明をします。
               </div>
             </v-row>
             <v-row class="my-2 mx-2">
@@ -385,11 +408,10 @@
             </v-row>
             <v-row class="mt-1 mb-2 mx-4">
               <div>
-                口径とは、水を供給するための水道管の<b>太さ(直径)</b>のことです。
-                地下水は口径が約150mmほどの大きさの水道管を流れていき、
-                そこから家庭に水を供給するために細い口径の水道管へと流れます。
-                家庭用水道水では主に、<b>13mm</b>、<b>20mm</b>の口径が用いられます。
-                口径の太さが変わると、何が変わるのでしょうか。
+                口径とは水道メーターに接続されている水道管の直径を指します。
+                この口径は、近くまできている水道管の口径や家庭内の蛇口の数によって決まります。
+                家の水道メーターについてる口径を近所まできている水道管よりも大きい口径にすることはできません。
+                一般家庭における口径は、13mm、20mmが用いられています。
               </div>
             </v-row>
             <v-row class="mb-1 mt-4 mx-3">
@@ -397,42 +419,29 @@
             </v-row>
             <v-row class="mt-1 mb-2 mx-4">
               <div>
-                口径が変わると<b>「一度に流すことができる水の量」</b>が変わります。
-                複数の蛇口で水を同時に流す場合、口径が小さいとスムーズに水が流れなくなります。
-                口径が20mmの場合、13mmと比較すると一度に出てくる水の量約2.4倍も多くなります。
-                例えば、浴槽に水を溜めようとすると、口径20mmだと10分で溜まる場合、口径13mmだと25分近くかかってしまうという感じです。
-                そうなると、『口径が大きい方が便利なのでは？』と思いますよね。
-                しかしながら、口径が大きくなるほど水道料金は高くなっていきます。
-                口径が13mmと20mmではどれくらい水道料金が異なるのかは、実際にデータをみて確認してみてください。
+                口径の大きさによって維持管理にかかる費用が異なるため、
+                多くの事業体では口径によって料金が異なります。
+                一般的には口径が大きくなればなるほど水道料金が高くなる傾向にあります。
               </div>
             </v-row>
-            <v-row class="mb-1 mt-4 mx-3">
-              <h3>口径の決定 <br /></h3>
-            </v-row>
-            <v-row class="mt-1 mb-2 mx-4">
-              <div>
-                口径は建物によって決定します。そのため、アパートやマンションの集合住宅での口径は勝手に変更することはできません。
-                そもそも、口径を変えようとすると工事を実施しなければならないため、賃貸住宅では基本的に口径の変更はできません。
-                集合住宅の場合、親メーターと子メーターがあり、親メーターの口径は大きく子メーターの口径は小さくなっています。
-                しかし、子メーターがない場合など親メーターで水道料金が計算されている場合があります。
-                集合住宅に住む場合は、水道料金がどの口径で計算されているか確認する必要がありますね。<br /><br />
-                新築で家を建てる場合は、大方の場合で工事業者が設計を行い口径をどの大きさにするか提案してくれます。
-                もともと設置されてる口径と異なる口径の水道管を設置する場合は工事をする必要があるため別途料金が発生します。
-                工事業者の提案を受けるのが確実ですが、自分たちでも考えてどうするのか決めることも大切です。
-              </div>
-            </v-row>
+
             <v-row class="my-2 mx-2">
               <h2 class="primary--text">使用水量について</h2>
             </v-row>
             <v-row class="mt-1 mb-2 mx-4">
               <div>
+                本サイトにおける使用水量とは、1ヶ月間に使った水の量を示しています。
+                使用水量に応じた料金は、（使用水量）×（単価）で計算されます。
+                （単価）は事業者によって異なり、使用水量に関わらず一定の単価や、
+                使用水量が多くなるほど単価が高くなる逓増性を採用している事業体があります。<br /><br />
+
                 皆さんは毎月どれくらい家庭で水を使用しているか把握していますか？
                 <a
                   href="https://www.waterworks.metro.tokyo.lg.jp/kurashi/shiyou/jouzu.html"
                   target="_blank"
                   >東京都水道局の調査(令和2年)
                 </a>
-                では、世帯人数による水道使用量の平均は以下のような結果でした。
+                では、世帯人数による平均の使用水量は以下のような結果でした。
               </div>
             </v-row>
             <v-col cols="8" md="4">
@@ -450,7 +459,84 @@
             <v-row class="mt-1 mb-1 mx-4">
               <div>
                 皆さんの毎月の使用量は平均と比較してどうでしょうか？
-                本サイトで水道料金を確認する際は平均の使用量や実際の自分の使用量などを参考に見てみてください。<br /><br />
+                本サイトで水道料金を確認する際は平均の使用量や実際の自分の使用量などを参考にご覧ください。<br /><br />
+              </div>
+            </v-row>
+            <v-row class="my-2 mx-2">
+              <h2 class="primary--text">
+                口径と使用水量の違いによる料金の違いの例
+              </h2>
+            </v-row>
+            <v-row class="my-2 mx-2">
+              口径と使用水量の違いによる料金の違いを具体的な事例で見てみましょう。
+              まずは使用水量が同じでも口径が違う場合についてみてみます。
+            </v-row>
+            <v-row class="my-2 mx-2">
+              <table
+                border="1"
+                style="border-collapse: collapse"
+                bgcolor="#FFFFFF"
+                cellpadding="100"
+              >
+                <tr bgcolor="#CCCCEE">
+                  <th width="90">使用水量</th>
+                  <th width="90">口径</th>
+                  <th width="90">静岡県</th>
+                  <th width="90">山梨県</th>
+                </tr>
+                <tr>
+                  <td width="60" align="right">20㎥</td>
+                  <td width="60" align="right">13mm</td>
+                  <td width="60" align="right" bgcolor="#BDD7EE">2,417円</td>
+                  <td width="60" align="right" bgcolor="#F8CBAD">2,407円</td>
+                </tr>
+                <tr>
+                  <td width="60" align="right">20㎥</td>
+                  <td width="60" align="right">20mm</td>
+                  <td width="60" align="right" bgcolor="#F8CBAD">2,651円</td>
+                  <td width="60" align="right" bgcolor="#BDD7EE">2,751円</td>
+                </tr>
+              </table>
+            </v-row>
+            <v-row class="my-2 mx-2">
+              静岡県と山梨県の平均水道料金において使用水量が同じ場合、
+              口径が13mmの時は山梨県の方が静岡県より安くなっています。
+              一方、口径が20mmの時は静岡県の方が山梨県よりも安くなっています。<br /><br />
+              次に使用水量の変化による違いを見てみましょう。
+            </v-row>
+            <v-row class="my-2 mx-2">
+              <table
+                border="1"
+                style="border-collapse: collapse"
+                bgcolor="#FFFFFF"
+                cellpadding="100"
+              >
+                <tr bgcolor="#CCCCEE">
+                  <th width="90">使用水量</th>
+                  <th width="90">口径</th>
+                  <th width="90">大阪府</th>
+                  <th width="90">東京都</th>
+                </tr>
+                <tr>
+                  <td width="60" align="right">10㎥</td>
+                  <td width="60" align="right">13mm</td>
+                  <td width="60" align="right" bgcolor="#BDD7EE">1,130円</td>
+                  <td width="60" align="right" bgcolor="#F8CBAD">1,149円</td>
+                </tr>
+                <tr>
+                  <td width="60" align="right">20㎥</td>
+                  <td width="60" align="right">13mm</td>
+                  <td width="60" align="right" bgcolor="#F8CBAD">2,752円</td>
+                  <td width="60" align="right" bgcolor="#BDD7EE">2,630円</td>
+                </tr>
+              </table>
+            </v-row>
+            <v-row class="mt-2 mb-2 mx-4">
+              <div>
+                大阪府と東京都の平均水道料金において口径が13mmで同じ場合、
+                使用水量が10㎥の時は大阪府の方が安くなっていますが、
+                使用水量が増えた20㎥の時は東京都の方が安くなっています。
+                このように水道料金や口径が異なることによって地域ごとに水道料金が異なることが分かります。
               </div>
             </v-row>
             <v-row id="data" class="mt-2 mb-2 mx-4">
@@ -667,5 +753,13 @@ h1::before {
 .box1 p {
   margin: 0;
   padding: 0;
+}
+
+td {
+  padding: 5px;
+}
+
+th {
+  padding: 5px;
 }
 </style>
