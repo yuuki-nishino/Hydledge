@@ -37,37 +37,39 @@
               <v-col cols="12" md="10" class="ml-10">
                 <ul color="rgba(242 242 242)">
                   <li>
-                    <router-link to="/charge#intro"
-                      >水道事業と水道料金</router-link
-                    >
+                    <nuxt-link v-scroll-to="'#intro'" to>
+                      水道事業と水道料金
+                    </nuxt-link>
                   </li>
                   <li>
-                    <router-link to="/charge#how">
+                    <nuxt-link v-scroll-to="'#how'" to>
                       水道料金算定の仕組み
-                    </router-link>
+                    </nuxt-link>
                     <ul>
                       <li>総括原価方式</li>
                       <li>水道料金体系</li>
                     </ul>
                   </li>
                   <li>
-                    <router-link to="/charge#variant">口径と使用量</router-link>
+                    <nuxt-link v-scroll-to="'#variant'" to>
+                      口径と使用量
+                    </nuxt-link>
                     <ul>
                       <li>口径について</li>
                       <li>使用水量について</li>
                       <li>（例）口径と使用水量の違いによる料金の違い</li>
                     </ul>
                   </li>
-                  <li id="intro">
-                    <router-link to="/charge#data"
-                      >水道料金データの見方</router-link
-                    >
+                  <li>
+                    <nuxt-link v-scroll-to="'#data'" to>
+                      水道料金データの見方
+                    </nuxt-link>
                   </li>
                 </ul>
               </v-col>
             </v-row>
             <v-divider></v-divider>
-            <v-row class="my-2">
+            <v-row id="intro" class="my-2">
               <v-col cols="12" md="5">
                 <h1>水道事業と水道料金</h1>
               </v-col>
@@ -127,13 +129,13 @@
                 >
                 ）、公正妥当であることが求められています。
               </div>
-              <div id="how" class="my-10">
+              <div class="my-10">
                 では、水道料金はどのように決定されているのでしょうか？
               </div>
             </v-row>
 
             <v-divider></v-divider>
-            <v-row class="my-2">
+            <v-row id="how" class="my-2">
               <v-col cols="12" md="5">
                 <h1>水道料金算定の仕組み</h1>
               </v-col>
@@ -384,12 +386,12 @@
                 </tr>
               </table>
             </v-row>
-            <v-row id="variant" class="my-2 mx-3">
+            <v-row class="my-2 mx-3">
               <v-img :src="change_graph" max-width="90%"></v-img>
             </v-row>
 
             <v-divider></v-divider>
-            <v-row class="my-2">
+            <v-row id="variant" class="my-2">
               <v-col cols="12" md="5">
                 <h1>口径と使用水量</h1>
               </v-col>
@@ -539,14 +541,14 @@
                 このように水道料金や口径が異なることによって地域ごとに水道料金が異なることが分かります。
               </div>
             </v-row>
-            <v-row id="data" class="mt-2 mb-2 mx-4">
+            <v-row class="mt-2 mb-2 mx-4">
               <div>
                 本サイトでは、口径が「13mm」と「20mm」の場合と、水道料金が「10㎥」と「20㎥」の場合の水道料金データを表示しています。
                 (基本料金と超過料金に関しては口径「13mm」のみを使用)
               </div>
             </v-row>
             <v-divider></v-divider>
-            <v-row class="my-2">
+            <v-row id="data" class="my-2">
               <v-col cols="12" md="5">
                 <h1>水道料金データの見方</h1>
               </v-col>
