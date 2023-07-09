@@ -98,15 +98,18 @@ export default {
     return {
       logo_src: require('@/assets/img/logo_original2.png'),
       sns: [
-        { icon: 'mdi-facebook', link: 'https://ja-jp.facebook.com/' },
-        { icon: 'mdi-twitter', link: 'https://twitter.com/' },
-        { icon: 'mdi-instagram', link: 'https://www.instagram.com/' },
+        {
+          icon: 'mdi-facebook',
+          link: 'https://www.facebook.com/profile.php?id=100091943935693',
+        },
+        { icon: 'mdi-twitter', link: 'https://twitter.com/Hydledge' },
+        { icon: 'mdi-instagram', link: 'https://www.instagram.com/Hydledge/' },
       ],
       items: [
         { title: '硬度', link: '/hardness' },
-        { title: '水道料金', link: '/' },
-        { title: 'CO2排出量', link: '/' },
-        { title: 'pH値', link: '/' },
+        { title: '水道料金', link: '/charge' },
+        // { title: 'CO2排出量', link: '/' },
+        // { title: 'pH値', link: '/' },
       ],
     }
   },
