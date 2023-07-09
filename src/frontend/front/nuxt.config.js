@@ -30,7 +30,8 @@ export default {
       {
         src: '~/plugins/amcharts.js',
         ssr: false
-      }
+      },
+      '~plugins/vue-scrollto',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

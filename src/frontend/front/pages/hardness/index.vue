@@ -23,9 +23,9 @@
                 水道水の硬度は場所によって異なることをご存知ですか？
                 欧米と日本の水の硬度が異なることは、多くの方が知っているかも知れません。<br />
                 実は、日本国内でも地域によって硬度が異なります。日本の水道水は平均的には軟水ですが、硬水の地域も存在します。<br />
-                このサイトでは、全国の水道水の硬度を水質検査ごとに表示し、
+                このサイトでは、全国の水道水の硬度を浄水場における水質検査ごとに表示し、
                 都道府県の平均硬度や検査地点ごとの硬度をランキングやマッピング、グラフなどで表示しています。<br />
-                なお、硬度ランキングの上位やかいが良い悪いを意味するわけではありません。<br /><br /><br /><br />
+                なお、硬度ランキングの上位や下位が良い悪いを意味するわけではありません。<br /><br /><br /><br />
               </div>
               <div>
                 ここからは硬度の基本的な説明となります。<br /><br />
@@ -40,7 +40,7 @@
                 <v-btn text color="primary" @click="moveDataPref()">
                   <strong>都道府県ごとの硬度データ</strong> </v-btn
                 ><br /><br />
-                <strong>硬度に関する知識をまず身につけたい方</strong><br />
+                <strong>硬度とは何か知りたい方</strong><br />
                 →&nbsp;&nbsp;<font color="primary"
                   ><strong
                     >そのままスクロールして読み進めてください。</strong
@@ -59,28 +59,28 @@
               <v-col cols="12" md="10" class="ml-10">
                 <ul color="rgba(242 242 242)" class="normal-list">
                   <li>
-                    <router-link to="/hardness#what">硬度とは？</router-link>
+                    <nuxt-link v-scroll-to="'#what'" to> 硬度とは？ </nuxt-link>
                   </li>
                   <li>
-                    <router-link to="/hardness#criterion">
+                    <nuxt-link v-scroll-to="'#criterion'" to>
                       水道水における基準
-                    </router-link>
+                    </nuxt-link>
                   </li>
                   <li>
-                    <router-link to="/hardness#feature"
-                      >硬度の違いによる</router-link
-                    >
+                    <nuxt-link v-scroll-to="'#feature'" to>
+                      硬度の違いによる特徴
+                    </nuxt-link>
                   </li>
-                  <li id="what">
-                    <router-link to="/hardness#howto"
-                      >硬度データの見方</router-link
-                    >
+                  <li>
+                    <nuxt-link v-scroll-to="'#howto'" to>
+                      硬度データの見方
+                    </nuxt-link>
                   </li>
                 </ul>
               </v-col>
             </v-row>
             <v-divider></v-divider>
-            <v-row class="my-2">
+            <v-row id="what" class="my-2">
               <v-col cols="12" md="5">
                 <h1>硬度とは？</h1>
               </v-col>
@@ -103,11 +103,20 @@
               <div>
                 <br />
                 <br />
-                硬度が低い水を<b>「軟水」</b>、硬度が高い水を<b>「硬水」</b>といい、<a
+                硬度が低い水を<b>「軟水」</b>、硬度が高い水を<b>「硬水」</b>といい、
+                <!-- <a
                   href="https://apps.who.int/iris/bitstream/handle/10665/70168/WHO_HSE_WSH_10.01_10_Rev1_eng.pdf"
                   target="_blank"
-                  >WHOの基準</a
-                >では以下のように分類されています。 <br /><br />
+                >
+                  WHOの基準
+                </a> -->
+                <a
+                  href="https://ja.wikipedia.org/wiki/%E7%A1%AC%E5%BA%A6_(%E6%B0%B4)"
+                  target="_blank"
+                >
+                  WHOの基準
+                </a>
+                では以下のように分類されています。 <br /><br />
               </div>
               <v-col cols="11" md="5" class="mr-10">
                 <ul class="box-ul">
@@ -121,10 +130,9 @@
               <v-col cols="12" md="5">
                 <v-img :src="hard_img_src"></v-img>
               </v-col>
-              <v-row id="criterion"></v-row>
             </v-row>
             <v-divider></v-divider>
-            <v-row class="my-2">
+            <v-row id="criterion" class="my-2">
               <v-col cols="12" md="5">
                 <h1>水道水における基準</h1>
               </v-col>
@@ -141,7 +149,7 @@
                     href="https://www.mhlw.go.jp/topics/bukyoku/kenkou/suido/kijun/seido.html"
                     target="_blank"
                     >平成15年5月30日厚生労働省令第101号</a
-                  >）で定められた水質基準の適合することが必要です。
+                  >）で定められた水質基準に適合することが必要です。
                   この水質基準は、51項目が定められており、硬度（カルシウム、マグネシウムなど）は次のように定められています。<br />
                   （参考：<a
                     href="https://www.mhlw.go.jp/topics/bukyoku/kenkou/suido/kijun/dl/k34.pdf"
@@ -171,8 +179,8 @@
                 </div>
               </v-col>
             </v-row>
-            <v-divider id="feature"></v-divider>
-            <v-row class="my-2">
+            <v-divider></v-divider>
+            <v-row id="feature" class="my-2">
               <v-col cols="12" md="5">
                 <h1>硬度の違いによる特徴</h1>
               </v-col>
@@ -185,17 +193,17 @@
                       >硬度の違いはどうして起こるのでしょうか？</strong
                     ></font
                   ><br /><br />
-                  一般的には、その水が通ってくる<b>地層</b>に影響されると言われています。<br />
+                  一般的には、その水が通ってくる<b>地層</b>に影響を受けると言われています。<br />
                   硬水が採水される地域では、ミネラル成分を豊富に含んだ<b>水成岩</b>を通るため、
                   ミネラル成分を含んだ<b>硬水</b>となります。<br />
                   一方、日本のように<b>軟水</b>が多い地域では、マグマが冷え固まってできる<b>火成岩</b>が多い地質のため、
-                  カルシウムやマグネシウムが含まれず、軟水となります。<br /><br />
+                  カルシウムやマグネシウムをほとんど含まない軟水となります。<br /><br />
 
                   また、地形的な要因でも硬度に違いが出ることがあります。
                   例えば、<b>なだらか</b>な地形では水がゆっくり流れ地層に滞在する時間が長くなるため、
                   ミネラル成分をより多く含んだ硬水となりやすい傾向にあります。
-                  一方、日本のように<b>急峻な地形</b>が多い地域では、水が地層にとどまることなく流れてしまい、
-                  ミネラル成分を吸収しないため、<b>軟水</b>となる傾向があります。<br /><br />
+                  一方、日本のように<b>急峻な地形</b>が多い地域では、水が地層に滞在する時間が少なく、
+                  ミネラル成分を吸収する機会が少ないため、<b>軟水</b>になりやすい傾向があります。<br /><br />
 
                   <b>地層や地形</b>とその地域の水の硬度の関係を調べると、
                   硬度の違いの要因に触れることができるかもしれませんね。<br /><br /><br />
@@ -224,7 +232,7 @@
                       </ul>
                     </v-col>
                   </v-row>
-                  <div id="howto">
+                  <div>
                     軟水と硬水のどちらが優れているかは、その用途によって異なりますが、
                     水道水から出てくる水の硬度が違うと<b>「少なからず生活に影響しそうだ」</b>ということは言えそうですね。<br /><br />
                   </div>
@@ -232,7 +240,7 @@
               </v-col>
             </v-row>
             <v-divider></v-divider>
-            <v-row class="my-2">
+            <v-row id="howto" class="my-2">
               <v-col cols="12" md="5">
                 <h1>硬度データの見方</h1>
               </v-col>
