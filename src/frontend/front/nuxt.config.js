@@ -47,7 +47,7 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/dotenv',
     "@nuxtjs/svg",
-    '@aceforth/nuxt-optimized-images',
+    // '@aceforth/nuxt-optimized-images',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -89,7 +89,8 @@ export default {
       }
     }
   },
-
+  // buildDir: 'nuxt-dist',
+  target: 'static',
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^vue2-google-maps($|\/)/]
@@ -106,7 +107,7 @@ export default {
     }
   },
   optimizedImages: {
-    optimizeImages: true,
-    optimizeImagesInDev: true,
+    optimizeImages: false,
+    optimizeImagesInDev: false,
   }
 }
